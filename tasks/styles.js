@@ -36,7 +36,7 @@ module.exports = function styles() {
       postcss([
         atImport(),
         autoprefixer({
-          browsers: config.browserslist,
+          overrideBrowserslist: config.browserslist,
         }),
         ...(compress ? [nano()] : []),
         ...config.styles.plugins,
