@@ -1,10 +1,10 @@
 {
-  "name": "@strt/bricks",
+  "name": "@alexandernanberg/bricks",
   "description": "A zero-configuration toolkit for building modern web apps",
-  "version": "2.19.2",
-  "author": "Strateg Marknadsföring AB <alexander.nanberg@strateg.se>",
+  "version": "3.0.0",
+  "author": "Alexander Nanberg <alexander.nanberg@strateg.se>",
   "license": "MIT",
-  "repository": "github:strt/bricks",
+  "repository": "github:alexandernanberg/bricks",
   "keywords": [
     "bricks",
     "toolkit",
@@ -12,7 +12,7 @@
     "zero-configuration"
   ],
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
   },
   "files": [
     "babel.js",
@@ -37,8 +37,7 @@
   "lint-staged": {
     "*.js": [
       "eslint",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "dependencies": {
@@ -86,10 +85,10 @@
     "webpack-hot-middleware": "^2.24.3"
   },
   "devDependencies": {
-    "eslint": "^5.4.0",
-    "eslint-config-strateg": "^1.1.1",
-    "husky": "^2.0.0",
-    "lint-staged": "^8.0.0",
-    "prettier": "^1.14.3"
+    "eslint": "^7.4.0",
+    "eslint-config-alexandernanberg": "^1.11.4",
+    "husky": "^4.0.0",
+    "lint-staged": "^10.0.0",
+    "prettier": "^2.0.0"
   }
 }

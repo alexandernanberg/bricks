@@ -5,6 +5,7 @@
 Bricks is a dev-toolkit for developing modern web apps without the need of configuring `Webpack`, `Babel`, `gulp` etc. It comes with sane defaults but also allows for customization.
 
 ## Contents
+
 - [Install](#install)
 - [Usage](#usage)
 - [Configuration](#configuration)
@@ -14,11 +15,13 @@ Bricks is a dev-toolkit for developing modern web apps without the need of confi
 - [FAQ](#faq)
 
 ## Install
+
 ```bash
 $ npm install -D @strt/bricks
 ```
 
 ... then add the scripts to your `package.json`
+
 ```json
 {
   "scripts": {
@@ -29,77 +32,89 @@ $ npm install -D @strt/bricks
 ```
 
 ## Usage
+
 Bricks includes two commands – `dev` (default) and `build`. Neither requires any arguments.
 
 ### `bricks` / `bricks dev`
+
 Builds the project for development.
 
 ### `bricks build`
+
 Builds the project for production which minifies and optimizes assets. Sourcemaps are also generated.
 
 ## Configuration
+
 For custom advanced behavior of Bricks, create a `bricks.config.js` file in the root of your project directory.
 
 ```javascript
 // bricks.config.js
 module.exports = {
   // Your custom configuration
-}
+};
 ```
+
 ### Options
-| Name | Type | Default | Description |
-| :-: | :--: | :--: | --- |
-| `source` | `{String}` | `'src'` | Path to source directory |
-| `output` | `{String}` | `'dist'` | Path to output directory |
-| `publicPath` | `{String}` | `null` | Value to pass to [Webpack](https://webpack.js.org/configuration/output/#output-publicpath).|
-| `browserSync` | `{Object}` | [Default](https://github.com/strt/bricks/blob/next/config/config.js#L39-L46) | Options to pass to [BrowserSync](https://www.browsersync.io/docs/options) |
-| `files` | `{Function}` | [Default](https://github.com/strt/bricks/blob/next/config/config.js#L30-L36) | Function to define which files are static |
-| `styles.path` | `{String}` | `styles` | Path to styles directory |
-| `styles.entries` | `{Array}` | `[]` |  |
-| `styles.plugins` | `{Array}` | `[]` | PostCSS plugins |
-| `scripts.path` | `{String}` | `scripts` | Path to scripts directory |
-| `scripts.entries` | `{Object}` | `` |  |
-| `icons.path` | `{String}` | `icons` | Path to icons directory |
-| `icons.copy` | `{Boolean}` | `false` | Copy icon files to dist folder |
-| `webpack` | `{Function}` | `null` | Function to extend the use of `webpack` |
+
+|       Name        |     Type     |                                   Default                                    | Description                                                                                 |
+| :---------------: | :----------: | :--------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------- |
+|     `source`      |  `{String}`  |                                   `'src'`                                    | Path to source directory                                                                    |
+|     `output`      |  `{String}`  |                                   `'dist'`                                   | Path to output directory                                                                    |
+|   `publicPath`    |  `{String}`  |                                    `null`                                    | Value to pass to [Webpack](https://webpack.js.org/configuration/output/#output-publicpath). |
+|   `browserSync`   |  `{Object}`  | [Default](https://github.com/strt/bricks/blob/next/config/config.js#L39-L46) | Options to pass to [BrowserSync](https://www.browsersync.io/docs/options)                   |
+|      `files`      | `{Function}` | [Default](https://github.com/strt/bricks/blob/next/config/config.js#L30-L36) | Function to define which files are static                                                   |
+|   `styles.path`   |  `{String}`  |                                   `styles`                                   | Path to styles directory                                                                    |
+| `styles.entries`  |  `{Array}`   |                                     `[]`                                     |                                                                                             |
+| `styles.plugins`  |  `{Array}`   |                                     `[]`                                     | PostCSS plugins                                                                             |
+|  `scripts.path`   |  `{String}`  |                                  `scripts`                                   | Path to scripts directory                                                                   |
+| `scripts.entries` |  `{Object}`  |                                      ``                                      |
+|   `icons.path`    |  `{String}`  |                                   `icons`                                    | Path to icons directory                                                                     |
+|   `icons.copy`    | `{Boolean}`  |                                   `false`                                    | Copy icon files to dist folder                                                              |
+|     `webpack`     | `{Function}` |                                    `null`                                    | Function to extend the use of `webpack`                                                     |
 
 #### `source`
+
 ```javascript
 // bricks.config.js
 module.exports = {
   source: 'src',
-}
+};
 ```
 
 #### `output`
+
 ```javascript
 // bricks.config.js
 module.exports = {
   output: 'dist',
-}
+};
 ```
 
 #### `publicPath`
+
 For more detailed information about the `publicPath` option, visit the [Webpack documentation](https://webpack.js.org/configuration/output/#output-publicpath).
+
 ```javascript
 // bricks.config.js
 module.exports = {
   publicPath: '/webdav/files/dist/',
-}
+};
 ```
 
 #### `styles`
+
 ```javascript
 // bricks.config.js
 module.exports = {
   styles: {
     path: 'styles',
     entries: ['./app.scss'],
-  }
-}
+  },
+};
 ```
 
 #### `scripts`
+
 ```javascript
 // bricks.config.js
 module.exports = {
@@ -109,23 +124,26 @@ module.exports = {
       app: './app.js',
       polyfills: './polyfills.js',
     },
-  }
-}
+  },
+};
 ```
 
 #### `icons`
+
 Generates a stylesheet from SVG files. It's also possible to copy the icon files to the dist folder by setting the `copy` property to `true`.
+
 ```javascript
 // bricks.config.js
 module.exports = {
   icons: {
     path: 'icons',
     copy: false,
-  }
-}
+  },
+};
 ```
 
 #### `webpack`
+
 To extend the usage of `webpack`, define a function that extends the config via `bricks.config.js`.
 
 ```javascript
@@ -134,11 +152,12 @@ module.exports = {
   webpack: ({ webpackConfig, config, isDev }) => {
     // Perform the customizations to the config
     return webpackConfig;
-  }
-}
+  },
+};
 ```
 
 #### `browserSync`
+
 To set a `BrowserSync` configuration, add a `browserSync` property to the `bricks.config.js`. Visit the [BrowserSync documentation](https://www.browsersync.io/docs/options) for more detailed information.
 
 ```javascript
@@ -149,14 +168,15 @@ module.exports = {
     serveStatic: [
       {
         route: '/webdav/files/resources',
-        dir: 'dist'
-      }
-    ]
-  }
-}
+        dir: 'dist',
+      },
+    ],
+  },
+};
 ```
 
 ### Browsers
+
 To customize which browsers you want to target, add a [browserslist](https://github.com/ai/browserslist) property to your `package.json` and define the browsers you want. This affects both `autoprefixer` and `babel`.
 
 ```json
@@ -166,6 +186,7 @@ To customize which browsers you want to target, add a [browserslist](https://git
 ```
 
 ### Babel
+
 To extend the usage of `babel`, create a `.babelrc` in the root of your project directory. This file will overwrite the default babel config. You need to add the `@strt/bricks/babel` preset if you only want to extend the default config.
 
 ```json
@@ -176,6 +197,7 @@ To extend the usage of `babel`, create a `.babelrc` in the root of your project 
 ```
 
 ## FAQ
+
 <p>
   <details>
   <summary><b>Scripts not updating</b></summary>
@@ -184,4 +206,5 @@ To extend the usage of `babel`, create a `.babelrc` in the root of your project 
 </p>
 
 ## License
+
 MIT © [Strateg Marknadsföring](https://github.com/strt)

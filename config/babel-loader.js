@@ -1,4 +1,4 @@
-module.exports = require('babel-loader').custom(babel => {
+module.exports = require('babel-loader').custom((babel) => {
   const presetItem = babel.createConfigItem(require('./babel-preset'), {
     type: 'preset',
   });
@@ -11,13 +11,13 @@ module.exports = require('babel-loader').custom(babel => {
         isDev: options.isDev,
       };
 
-      const loader = Object.assign({}, options);
+      const loader = { ...options };
       delete loader.isDev;
 
       return { custom, loader };
     },
     config(cfg) {
-      const options = Object.assign({}, cfg.options);
+      const options = { ...cfg.options };
 
       if (cfg.hasFilesystemConfig()) {
         // eslint-disable-next-line no-restricted-syntax

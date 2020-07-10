@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const tasks = require('../utils/getTasks');
-const config = require('./');
+const config = require('.');
 
 const isDev = process.env.NODE_ENV === 'development';
 

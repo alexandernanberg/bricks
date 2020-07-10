@@ -7,7 +7,7 @@ function validateFiles(files) {
   let currentFilePath;
 
   try {
-    files.forEach(filePath => {
+    files.forEach((filePath) => {
       currentFilePath = filePath;
       fs.accessSync(filePath, fs.F_OK);
     });
@@ -19,8 +19,9 @@ function validateFiles(files) {
 
     log.error(
       'Could not find a required file or directory.',
-      `${chalk.red('  Name: ') + fileName}\n${chalk.red('  Searched in: ') +
-        dirName}`,
+      `${chalk.red('  Name: ') + fileName}\n${
+        chalk.red('  Searched in: ') + dirName
+      }`,
     );
 
     return false;

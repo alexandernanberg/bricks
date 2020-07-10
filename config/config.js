@@ -28,7 +28,7 @@ const defaultConfig = {
       app: './app.js',
     },
   },
-  files: config => [
+  files: (config) => [
     `${config.source}/**`,
     `!${config.source}/${config.images.path}{,/**}`,
     `!${config.source}/${config.icons.path}{,/**}`,
@@ -57,18 +57,18 @@ const defaultConfig = {
 };
 
 function resolvePaths(prevConfig) {
-  const config = Object.assign({}, prevConfig);
-  const resolvePath = relativePath => resolve(prevConfig.dir, relativePath);
+  const config = { ...prevConfig };
+  const resolvePath = (relativePath) => resolve(prevConfig.dir, relativePath);
 
   config.source = resolvePath(config.source);
   config.output = resolvePath(config.output);
 
-  config.styles.entries = config.styles.entries.map(i =>
+  config.styles.entries = config.styles.entries.map((i) =>
     join(config.source, config.styles.path, i),
   );
 
   if (Array.isArray(config.scripts.entries)) {
-    config.scripts.entries = config.scripts.entries.map(i =>
+    config.scripts.entries = config.scripts.entries.map((i) =>
       join(config.source, config.scripts.path, i),
     );
   } else {

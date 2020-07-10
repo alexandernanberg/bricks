@@ -9,8 +9,5 @@ module.exports = function images() {
   const src = path.join(config.source, config.images.path, '**');
   const dest = path.join(config.output, config.images.path);
 
-  return gulp
-    .src(src)
-    .pipe(gulpif(!isDev, imagemin()))
-    .pipe(gulp.dest(dest));
+  return gulp.src(src).pipe(gulpif(!isDev, imagemin())).pipe(gulp.dest(dest));
 };

@@ -8,9 +8,7 @@ const log = require('../utils/log');
 
 if (!semver.satisfies(process.version, pkg.engines.node)) {
   log.error(
-    `Required node version ${
-      pkg.engines.node
-    } does not satisfy current version ${process.version}`,
+    `Required node version ${pkg.engines.node} does not satisfy current version ${process.version}`,
   );
   process.exit(0);
 }
@@ -78,7 +76,7 @@ const bin = require.resolve(`../scripts/${command}`);
 
 execa('node', [bin, ...forwardedArgs], {
   stdio: 'inherit',
-}).catch(e => {
+}).catch((e) => {
   log.error('Unknown error', e.toString());
   process.exit(0);
 });
