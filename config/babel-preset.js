@@ -39,6 +39,14 @@ module.exports = () => {
         { loose: true },
       ],
       [
+        require.resolve('@babel/plugin-proposal-private-property-in-object'),
+        { loose: true },
+      ],
+      [
+        require.resolve('@babel/plugin-proposal-private-methods'),
+        { loose: true },
+      ],
+      [
         require.resolve('@babel/plugin-proposal-object-rest-spread'),
         { useBuiltIns: true },
       ],
