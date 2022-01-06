@@ -1,7 +1,7 @@
 {
   "name": "@alexandernanberg/bricks",
   "description": "A zero-configuration toolkit for building modern web apps",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "author": "Alexander Nanberg <alexander.nanberg@strateg.se>",
   "license": "MIT",
   "repository": "github:alexandernanberg/bricks",
